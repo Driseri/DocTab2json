@@ -1,0 +1,24 @@
+# Ignoring Python virtual environment
+.venv/
+
+# Ignoring document files
+*.docx
+
+# Ignoring text files
+*.txt
+
+# Ignoring JSON output files
+*.json
+
+# Ignoring compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignoring IDE-specific files
+.vscode/
+.idea/
+
+# Ignoring system files
+.DS_Store
+Thumbs.db
