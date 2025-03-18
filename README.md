@@ -23,24 +23,21 @@ pip install python-docx
 ```
 
 ## Использование
-### Импорт парсера в Python-проект
+### 1.Использование в коде для сохранения словаря в переменную
 ```python
 from table2json import docx_table_to_json
-```
-
-### Разбор `.docx` файла и получение JSON-выходных данных
-```python
 docx_file = "example.docx"
 parsed_data = docx_table_to_json(docx_file)
 print(parsed_data)
 ```
 
-### Сохранение вывода в JSON-файл
+### 2.Сохранение вывода в JSON-файл в коде
 ```python
+from table2json import docx_table_to_json
 docx_table_to_json("example.docx", "output.json")
 ```
 
-### Использование в командной строке
+### 3.Использование в командной строке
 ```bash
 python table2json.py example.docx output.json
 ```
@@ -82,10 +79,3 @@ python table2json.py example.docx output.json
 - Если в документе нет таблиц, возвращается пустой словарь.
 - Если в первой колонке есть `№`, строка пропускается.
 - Если во второй колонке менее 3 символов, строка игнорируется.
-
-## Лицензия
-Этот проект лицензирован под MIT License.
-
-## Автор
-Разработано Даниилом.
-
