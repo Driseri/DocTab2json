@@ -5,7 +5,7 @@ import sys
 
 
 def is_bold(paragraph) -> bool:
-    """Определяет, содержит ли параграф жирный текст."""
+    """Кто ЖИРНЫЙ?"""
     return any(run.bold for run in paragraph.runs if run.bold is not None)
 
 
@@ -49,18 +49,18 @@ def docx_table_to_json(docx_path: str, output_path: Optional[str] = None) -> Dic
                 if len(text_cell) < 3:
                     continue
 
-                if index_cell and index_cell.replace('.', '').isdigit():  # Если в первой колонке число
-                    level = index_cell.count('.')  # Определяем уровень вложенности
-                    hierarchy_stack = hierarchy_stack[:level]  # Обрезаем стек до нужного уровня
+                if index_cell and index_cell.replace('.', '').isdigit(): 
+                    level = index_cell.count('.')  
+                    hierarchy_stack = hierarchy_stack[:level]
                     if hierarchy_stack:
-                        current_level = hierarchy_stack[-1]  # Получаем родительский уровень
+                        current_level = hierarchy_stack[-1]
                     else:
-                        current_level = data  # Если уровень верхний, работаем с корневым JSON
+                        current_level = data
                     
-                    current_level[text_cell] = {}  # Добавляем новый узел
-                    hierarchy_stack.append(current_level[text_cell])  # Сохраняем в стек
-                elif hierarchy_stack:  # Если в первой колонке пусто
-                    hierarchy_stack[-1][text_cell] = {}  # Добавляем в текущий узел
+                    current_level[text_cell] = {}
+                    hierarchy_stack.append(current_level[text_cell])
+                elif hierarchy_stack:
+                    hierarchy_stack[-1][text_cell] = {}
 
     if output_path:
         try:
